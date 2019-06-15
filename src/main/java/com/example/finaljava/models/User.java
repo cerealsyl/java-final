@@ -1,9 +1,17 @@
 package com.example.finaljava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -15,7 +23,21 @@ public class User {
 	private String password;
 	private String firstName;
 	private String lastName;
-	private Role role;
+	private String role;
+	private String email;
+
+	@OneToMany(mappedBy = "writer")
+	@JsonIgnore
+	private List<Story> storyList;
+
+	@ManyToMany
+	@JsonIgnore
+	@JoinTable(name="SUBSCRIPTION",
+	joinColumns = @JoinColumn(name="USER_ID"),
+	inverseJoinColumns = @JoinColumn(name="BOOK_ID"))
+	private List<Book> bookList;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -46,37 +68,52 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
-	public User(Long i, String username, String password, String firstName, String lastName, Role role) {
-		super();
-		this.id = i;
+
+
+	public User(Long id, String username, String password, String firstName, String lastName,
+							String role) {
+		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.role = role;
+		this.storyList = storyList;
+		this.bookList = bookList;
 	}
-	
-	
+
 	public User() {
 		super();
 	}
-	public User(String username, String password, String firstName, String lastName, Role role) {
-		super();
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.role = role;
+
+
+	public List<Story> getStoryList() {
+		return storyList;
+	}
+
+	public List<Book> getBookList() {
+		return bookList;
+	}
+
+	public void setStoryList(List<Story> shortStoryList) {
+		this.storyList = shortStoryList;
+	}
+
+	public void setBookList(List<Book> bookList) {
+		this.bookList = bookList;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
-
-
-
 }
