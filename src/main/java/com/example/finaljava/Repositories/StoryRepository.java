@@ -16,8 +16,8 @@ public interface StoryRepository extends CrudRepository<Story, Long>{
 
   // HOW TO QUERY FOR SIMILAR NAMES
   // like if I type in harry, any story whose title contains harry should be return
-  @Query(value = "select * from story where title like %search%", nativeQuery = true)
-  public List<Story> findStoriesThatContainsSearchWord(@Param("search")String search);
+  @Query("SELECT s FROM Story s WHERE s.title LIKE CONCAT('%', :word,'%')")
+  public List<Story> findStoriesThatContainsSearchWord(@Param("word")String word);
 
 
 

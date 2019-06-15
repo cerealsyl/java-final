@@ -88,7 +88,9 @@ public class StoryListControllers {
 
   @PostMapping("/api/stories")
   public List<Story> searchStoryBasedOnKeyword(@RequestBody String word) {
-    
+    String search = word.replace("\"", "");
+    return storyRepository.findStoriesThatContainsSearchWord(search);
+
   }
 
 
