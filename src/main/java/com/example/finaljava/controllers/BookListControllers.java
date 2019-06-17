@@ -34,25 +34,15 @@ public class BookListControllers {
 			@PathVariable("userId")Long userId,
 			@RequestBody Book newBook) {
 		User user = userRepository.findUserById(userId);
-<<<<<<< HEAD
 		Book book = bookRepository.findBookByTitle(newBook.getTitle());
 		if(book == null) {
 			List<User> emptyList = new ArrayList<>();
 			newBook.setSubscribers(emptyList);
-=======
-		Book book = bookRepository.findBookById(newBook.getBookId());
-		if(book == null) {
-			List<User> emptyList = new ArrayList<>();
-			newBook.setSubscribers(emptyList);
-		}
-		if(user != null) {
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 			newBook.getSubscribers().add(user);
 			bookRepository.save(newBook);
 			user.getBookList().add(newBook);
 			userRepository.save(user);
 			return new ResponseEntity<>(HttpStatus.OK);
-<<<<<<< HEAD
 
 		}else{
 			if(user.getBookList().contains(book)){
@@ -64,15 +54,10 @@ public class BookListControllers {
 				userRepository.save(user);
 				return new ResponseEntity<>(HttpStatus.OK);
 			}
-		}
-
-=======
-		}else {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+	
 		}
 		
-	    
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
+	   
 	}
 	  
 	@GetMapping("/api/users/{userId}/books")
@@ -97,15 +82,10 @@ public class BookListControllers {
 		return user.getBookList();
 	}
 
-<<<<<<< HEAD
+
 	@GetMapping("/api/books/{title}/users")
-	public List<User> findAllUsersByBookId(@PathVariable("title")String title){
+	public List<User> findAllUsersByBookTitle(@PathVariable("title")String title){
 		return userRepository.findAllUsersByBookTitle(title);
-=======
-	@GetMapping("/api/books/{bookId}/users")
-	public List<User> findAllUsersByBookId(@PathVariable("bookId")Long bookId){
-		return userRepository.findAllUsersByBookId(bookId);
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 	}
 	
 

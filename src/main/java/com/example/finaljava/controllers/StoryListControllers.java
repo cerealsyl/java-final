@@ -8,10 +8,9 @@ import com.example.finaljava.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
+
 import org.springframework.web.bind.annotation.CrossOrigin;
-=======
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,10 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD
 @CrossOrigin("*")
-=======
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 public class StoryListControllers {
 
   @Autowired
@@ -43,16 +39,15 @@ public class StoryListControllers {
 
   @GetMapping("/api/users/{userId}/stories")
   public List<Story> findStoriesByUserId(@PathVariable("userId")Long userId) {
-    return storyRepository.findStoriesByUserId(userId);
-<<<<<<< HEAD
-=======
-//    User user = userRepository.findUserById(userId);
-//    if(user.getRole().equals("VIEWER")){
-//      return null;
-//    }else{
-//      return storyRepository.findStoriesByUserId(userId);
-//    }
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
+    
+
+    User user = userRepository.findUserById(userId);
+    if(user.getRole().equals("VIEWER")){
+      return null;
+    }else{
+      return storyRepository.findStoriesByUserId(userId);
+    }
+
 
   }
 
@@ -105,7 +100,7 @@ public class StoryListControllers {
   }
 
 
-<<<<<<< HEAD
+
   @GetMapping("/api/stories/{storyId}")
   public ResponseEntity<Story> findStoryById(@PathVariable("storyId")Long storyId) {
     Story story = storyRepository.findStoryById(storyId);
@@ -118,17 +113,6 @@ public class StoryListControllers {
 
   }
 
-=======
 
-//  @PostMapping("/api/story")
-//  public List<Story> searchShortStory(@RequestBody String keyword) {
-//
-//  }
-//
-//  @GetMapping("/api/story/{storyId}")
-//  public Story findStoryById(@PathVariable("storyId")Long storyId) {
-//
-//  }
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 
 }

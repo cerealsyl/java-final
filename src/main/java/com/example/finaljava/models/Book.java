@@ -2,10 +2,8 @@ package com.example.finaljava.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -34,14 +32,12 @@ public class Book {
     this.subscribers = subscribers;
   }
 
-<<<<<<< HEAD
-=======
   public Book(String title, Long id) {
     this.title = title;
     this.id = id;
     this.subscribers = new ArrayList<>();
   }
->>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
+
 
   public Book() {
   }
