@@ -20,9 +20,12 @@ public interface BookRepository extends CrudRepository<Book, Long> {
   @Query("select b FROM Book b WHERE b.id = :b_id")
   public Book findBookById(@Param("b_id")Long bookId);
 
+<<<<<<< HEAD
   @Query("select b FROM Book b WHERE b.title = :b_title")
   public Book findBookByTitle(@Param("b_title")String title);
 
+=======
+>>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
   // METHOD 1: findAllBooksByUserId
 
   //METHOD 2: findAllUsersByBookId

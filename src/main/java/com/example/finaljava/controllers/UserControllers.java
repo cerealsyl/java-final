@@ -7,7 +7,10 @@ import com.example.finaljava.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.CrossOrigin;
+=======
+>>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+<<<<<<< HEAD
 @CrossOrigin("*")
+=======
+>>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 public class UserControllers {
 	
 	@Autowired
@@ -36,6 +42,7 @@ public class UserControllers {
 
 	}
 	@GetMapping("/api/users/{userId}")
+<<<<<<< HEAD
 	public ResponseEntity<User> findUserById(@PathVariable("userId")Long id) {
 		User user = repository.findUserById(id);
 		if (user != null) {
@@ -43,6 +50,10 @@ public class UserControllers {
     }else{
 		  return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+=======
+	public User findUserById(@PathVariable("userId")Long id) {
+		return repository.findById(id).get();
+>>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
         
 	}
 	

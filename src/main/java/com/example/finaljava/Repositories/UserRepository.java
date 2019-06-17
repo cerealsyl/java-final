@@ -23,8 +23,11 @@ public interface UserRepository extends CrudRepository <User, Long>{
   @Query("select u FROM User u WHERE u.id = :userId")
   public User findUserById(@Param("userId")Long userId);
 
+<<<<<<< HEAD
   @Query("select u FROM User u JOIN u.bookList b WHERE b.title = :bookTitle")
   public List<User> findAllUsersByBookTitle(@Param("bookTitle")String title);
 
+=======
+>>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 
 }

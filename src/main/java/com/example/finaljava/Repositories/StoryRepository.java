@@ -19,9 +19,12 @@ public interface StoryRepository extends CrudRepository<Story, Long>{
   @Query("SELECT s FROM Story s WHERE s.title LIKE CONCAT('%', :word,'%')")
   public List<Story> findStoriesThatContainsSearchWord(@Param("word")String word);
 
+<<<<<<< HEAD
   @Query("select s FROM Story s WHERE s.id = :storyId")
   public Story findStoryById(@Param("storyId")Long storyId);
 
+=======
+>>>>>>> 8904f1fe176814a68c993ff87afef88fb362d90a
 
 
 
